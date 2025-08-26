@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>10th Class Math Study Material</title>
+<style>
+body {font-family:Arial, sans-serif; margin:0; padding:0; background: linear-gradient(to right,#e0f7fa,#fff); color:#333; scroll-behavior:smooth;}
+header {text-align:center; padding:40px 20px; background: linear-gradient(135deg,#4B79A1,#283E51); color:white; box-shadow:0 4px 8px rgba(0,0,0,0.3);}
+header h1 {margin:0; font-size:2.5em;}
+.mode-btn {padding:10px 25px; border:none; border-radius:50px; background:#ff7f50; color:white; cursor:pointer; margin-top:10px;}
+.mode-btn:hover {background:#e76f51;}
+.container {max-width:950px; margin:40px auto; background:white; padding:30px; border-radius:20px; box-shadow:0 8px 20px rgba(0,0,0,0.1);}
+.accordion {background: linear-gradient(135deg,#f6d365,#fda085); border-radius:15px; margin:10px 0; padding:18px 25px; cursor:pointer; font-weight:bold; box-shadow:0 4px 8px rgba(0,0,0,0.1); transition:0.3s;}
+.accordion:hover {transform:translateY(-3px);}
+.accordion.active {background:#4B79A1; color:white;}
+.panel {display:none; padding:15px 25px; background:#f1f8e9; border-radius:0 0 15px 15px; margin-bottom:10px; opacity:0; transition:0.3s, opacity 0.5s;}
+.example {background:#d0f0fd; padding:10px; margin:10px 0; border-radius:10px; cursor:pointer;}
+.example:hover {background:#74ebd5;}
+.quiz {background:#fff3e0; padding:10px; margin:10px 0; border-radius:10px;}
+.download-btn {display:inline-block; text-align:center; margin:20px 0; padding:12px 30px; font-size:1em; color:white; background:#4B79A1; border:none; border-radius:50px; cursor:pointer; text-decoration:none;}
+.download-btn:hover {background:#1E3C72;}
+.bookmark-btn {background:#ff7f50; color:white; padding:6px 12px; border:none; border-radius:8px; cursor:pointer; margin-left:10px;}
+body.dark-mode {background:#121212; color:#ddd;}
+body.dark-mode .container {background:#1e1e1e; color:#ddd;}
+body.dark-mode .accordion {background:#2c2c2c; color:#ddd;}
+body.dark-mode .accordion.active {background:#444; color:#fff;}
+body.dark-mode .panel {background:#333; color:#ddd;}
+body.dark-mode .example {background:#555;}
+body.dark-mode .quiz {background:#555;}
+</style>
+</head>
+<body>
+
+<header>
+<h1>10th Class Math Study Material</h1>
+<button class="mode-btn" onclick="toggleMode()">Toggle Dark/Light Mode</button>
+</header>
+
+<div class="container">
+<h2>All 14 Chapters</h2>
+
+<!-- Chapter Template -->
+<script>
+const chapters=[
+{title:"Chapter 1: Real Numbers",summary:"Rational & Irrational numbers, Euclid's Lemma, Fundamental Theorem of Arithmetic, HCF & LCM properties.",formulas:"HCF × LCM = Product of numbers",examples:["Find HCF of 36 and 60.","Show √2 is irrational."],quizzes:[{q:"LCM of 12 & 18?",a:"36"},{q:"HCF of 24 & 36?",a:"12"}]},
+{title:"Chapter 2: Polynomials",summary:"Types of polynomials, degree, factorization, remainder theorem, factor theorem.",formulas:"a³ + b³ = (a+b)(a²-ab+b²)",examples:["Factorize x³ + 27.","Find remainder when x³+2x²+3 divided by x+1."],quizzes:[{q:"Remainder when x³+1 divided by x+1?",a:"0"},{q:"Factorize x²-9",a:"(x-3)(x+3)"}]},
+{title:"Chapter 3: Pair of Linear Equations",summary:"Methods: Substitution, Elimination, Cross-Multiplication.",formulas:"ax + by = c",examples:["Solve x+y=10, x-y=4","Solve 2x+3y=13, x-y=1"],quizzes:[{q:"Solve x+y=5, x-y=1",a:"x=3,y=2"},{q:"Solve 3x+2y=12, x-y=1",a:"x=4,y=1"}]},
+{title:"Chapter 4: Quadratic Equations",summary:"Standard form ax²+bx+c=0, factorization, quadratic formula.",formulas:"x=[-b±√(b²-4ac)]/2a",examples:["Solve x²-5x+6=0","Roots of 2x²+3x-2=0"],quizzes:[{q:"Solve x²-3x+2=0",a:"x=1,2"},{q:"Solve x²+4x+4=0",a:"x=-2"}]},
+{title:"Chapter 5: Arithmetic Progressions",summary:"nth term, sum of n terms, common difference, first term.",formulas:"Tn=a+(n-1)d, Sn=n/2[2a+(n-1)d]",examples:["10th term of 2,5,8…","Sum of first 20 terms of 3,7,11…"],quizzes:[{q:"10th term 5,8,11…?",a:"32"},{q:"Sum first 5 terms 1,4,7…?",a:"35"}]},
+{title:"Chapter 6: Triangles",summary:"Similarity of triangles, Pythagoras theorem, properties.",formulas:"Area=1/2×base×height",examples:["Prove ΔABC~ΔDEF","Find missing side using Pythagoras"],quizzes:[{q:"If a²+b²=c², find side?",a:"Use Pythagoras"},{q:"Similarity condition?",a:"AAA,SAS,SSS"}]},
+{title:"Chapter 7: Coordinate Geometry",summary:"Distance, Section, Midpoint formula, area of triangle.",formulas:"Distance=√[(x2-x1)²+(y2-y1)²]",examples:["Distance between (1,2) and (4,6)","Midpoint of (2,3) and (6,7)"],quizzes:[{q:"Distance (0,0) & (3,4)?",a:"5"},{q:"Midpoint (1,1)&(3,5)?",a:"(2,3)"}]},
+{title:"Chapter 8: Introduction to Trigonometry",summary:"Trigonometric ratios, identities, heights & distances.",formulas:"sin²θ+cos²θ=1",examples:["Find sinA if cosA=3/5","Solve tanθ=1"],quizzes:[{q:"cos²θ+sin²θ?",a:"1"},{q:"If sinA=1/2, cosA?",a:"√3/2"}]},
+{title:"Chapter 9: Applications of Trigonometry",summary:"Height & distance, angles of elevation & depression.",formulas:"tanθ=opposite/adjacent",examples:["Height of pole using 30°","Distance of tree using shadow"],quizzes:[{q:"Angle elevation 45°, height?",a:"h=distance"},{q:"tan30°?",a:"1/√3"}]},
+{title:"Chapter10: Circles",summary:"Tangent, secant, chord, angles in circle.",formulas:"Tangent ⟂ radius",examples:["Prove tangent theorem","Chord length given radius & angle"],quizzes:[{q:"Tangent radius angle?",a:"90°"},{q:"Chord length formula?",a:"2r sinθ"}]},
+{title:"Chapter11: Constructions",summary:"Division of line, bisector, tangents, geometric constructions.",formulas:"Use ruler & compass",examples:["Bisect a line","Draw tangent from outside"],quizzes:[{q:"Bisect angle steps?",a:"Use compass"},{q:"Divide line 3 equal parts?",a:"Compass & ruler"}]},
+{title:"Chapter12: Areas Related to Circles",summary:"Area of sector, segment, circumference, circle formulas.",formulas:"Area of sector=(θ/360)×πr²",examples:["Area sector θ=60°, r=7","Segment area given radius & chord"],quizzes:[{q:"Area circle?",a:"πr²"},{q:"Circumference?",a:"2πr"}]},
+{title:"Chapter13: Surface Areas & Volumes",summary:"Cuboid, cube, sphere, cylinder, cone.",formulas:"Volume=l×b×h, Surface area=2(lb+bh+hl)",examples:["Volume cube side 5","Surface area cylinder r=3,h=7"],quizzes:[{q:"Volume sphere r=7?",a:"1436"},{q:"Surface area cube 4?",a:"96"}]},
+{title:"Chapter14: Statistics & Probability",summary:"Mean, median, mode, probability rules.",formulas:"P(E)=n(E)/n(S)",examples:["Mean of data set","Find probability of event"],quizzes:[{q:"Mean of 2,4,6?",a:"4"},{q:"P(head in coin)?",a:"1/2"}]}
+];
+
+chapters.forEach((ch,index)=>{
+document.write(`<div class="accordion">${ch.title} <button class="bookmark-btn" onclick="toggleBookmark(${index+1})">Bookmark</button></div>`);
+document.write(`<div class="panel">
+<p><strong>Summary:</strong> ${ch.summary}</p>
+<p><strong>Formulas:</strong> ${ch.formulas}</p>
+${ch.examples.map(ex=>`<div class="example">${ex}</div>`).join('')}
+${ch.quizzes.map((q,i)=>`<div class="quiz"><p>Quiz: ${q.q}</p><input type="text" id="q${index}_${i}"><button onclick="checkQuiz('q${index}_${i}','${q.a}')">Submit</button></div>`).join('')}
+</div>`);
+});
+</script>
+
+<a class="download-btn" href="math notes.pdf" download>Download All Chapters</a>
+</div>
+
+<footer>&copy; 2025 Revised Tube. All rights reserved.</footer>
+
+<script>
+function toggleMode(){document.body.classList.toggle('dark-mode');}
+let accs=document.getElementsByClassName('accordion');
+for(let i=0;i<accs.length;i++){
+accs[i].addEventListener('click',function(){
+this.classList.toggle('active');
+let panel=this.nextElementSibling;
+if(panel.style.display==="block"){panel.style.opacity=0; setTimeout(()=>{panel.style.display="none";},300);}
+else{panel.style.display="block"; setTimeout(()=>{panel.style.opacity=1;},10);}
+});
+}
+function checkQuiz(id,ans){
+let val=document.getElementById(id).value.trim();
+if(val==ans){alert("Correct! ✅");}else{alert("Incorrect ❌ Answer: "+ans);}
+}
+function toggleBookmark(num){alert("Bookmarked Chapter "+num);}
+</script>
+
+</body>
+</html>
