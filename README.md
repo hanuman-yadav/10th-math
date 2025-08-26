@@ -1,1 +1,1 @@
-# 10th-math
+# 10th.math
