@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://hanuman-yadav.github.io/sitemap.xml
